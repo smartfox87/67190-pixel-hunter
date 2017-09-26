@@ -1,7 +1,7 @@
 # Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
 
 * Студент: [Alexandr Dragin](https://up.htmlacademy.ru/ecmascript/3/user/67190).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Лепёшкин].
 
 ---
 

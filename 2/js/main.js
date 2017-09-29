@@ -1,24 +1,31 @@
 (() => {
 
+
+  let select = (index) => {
+    current = index;
+    mainElement.innerHTML = ``;
+    mainElement.appendChild(slides[index]);
+  };
+
   const checkKeyDown = (evt) => {
     if (evt.altKey === true && evt.keyCode === 37 && current !== 0) {
-      select(current - 1);
+      select(--current);
     }
     if (evt.altKey === true && evt.keyCode === 39 && current < slides.length - 1) {
-      select(current + 1);
+      select(++current);
     }
   };
 
   document.addEventListener(`keydown`, checkKeyDown);
 
-  let mainElement = document.getElementsByClassName(`central`);
+  let mainElement = document.querySelector(`.central`);
 
   let loadTemplate = (templateName) => {
     let node = document.createElement(`span`);
-    let template = document.getElementById(templateName);
+    let template = document.querySelector(`#` + templateName);
     let content = template.content ? template.content : template;
     node.appendChild(content);
-    return node.cloneNode(true);
+    return node;
   };
 
   let slides = [
@@ -32,13 +39,6 @@
 
   let current = 0;
 
-  debugger;
-
-  let select = (index) => {
-    current = index;
-    mainElement.innerHTML = ``;
-    mainElement.appendChild(slides[index]);
-  };
 
   select(0);
 

@@ -39,7 +39,6 @@
 
   let current = 0;
 
-
   select(0);
 
 })();

@@ -1,10 +1,13 @@
 import getElementFromTemplate from '../js/getElementFromTemplate';
 
+import game1 from '../templates/game1';
+import draw from '../js/draw';
+
 const rules = getElementFromTemplate(`<header class="header">
     <div class="header__back">
       <button class="back">
         <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
-        <img src="img/logo_small.png" width="101" height="44">
+        <img src="img/logo_small.svg" width="101" height="44">
       </button>
     </div>
   </header>
@@ -24,5 +27,20 @@ const rules = getElementFromTemplate(`<header class="header">
       <button class="rules__button  continue" type="submit" disabled>Go!</button>
     </form>
   </div>`);
+
+let rulesSubmit = rules.querySelector('.rules__button');
+
+rules.querySelector('.rules__input').oninput = (evt) => {
+  if (evt.target.value) {
+    rulesSubmit.removeAttribute('disabled');
+  } else {
+    rulesSubmit.setAttribute('disabled', '');
+  }
+};
+
+rulesSubmit.onclick = (e) => {
+  e.preventDefault();
+  draw(game1);
+};
 
 export default rules;

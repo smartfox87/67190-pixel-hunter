@@ -1,5 +1,8 @@
 import getElementFromTemplate from '../js/getElementFromTemplate';
 
+import rules from '../templates/rules';
+import draw from '../js/draw';
+
 const greeting = getElementFromTemplate(`<div class="greeting central--blur">
     <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
     <h1 class="greeting__asterisk">*</h1>
@@ -13,5 +16,10 @@ const greeting = getElementFromTemplate(`<div class="greeting central--blur">
     </div>
     <div class="greeting__continue"><span><img src="img/arrow_right.svg" width="64" height="64" alt="Next"></span></div>
   </div>`);
+
+const greeting__continue = greeting.querySelector('.greeting__continue');
+
+const handler = (e) => draw(rules);
+greeting__continue.addEventListener('click', handler);
 
 export default greeting;

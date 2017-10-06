@@ -1,5 +1,6 @@
 import getElementFromTemplate from '../js/getElementFromTemplate.js';
 
+import intro from '../templates/intro';
 import game2 from '../templates/game2.js';
 import draw from '../js/draw.js';
 
@@ -58,6 +59,10 @@ const game1 = getElementFromTemplate(`<header class="header">
       </ul>
     </div>
   </div>`);
+
+const goback = game1.querySelector('.header__back').addEventListener('click', () => {
+  draw(intro);
+});
 
 const answers = game1.querySelectorAll('.game__answer');
 

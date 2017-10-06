@@ -1,5 +1,7 @@
 import getElementFromTemplate from '../js/getElementFromTemplate';
 
+import intro from '../templates/intro';
+
 const stats = getElementFromTemplate(`<header class="header">
     <div class="header__back">
       <button class="back">
@@ -108,5 +110,9 @@ const stats = getElementFromTemplate(`<header class="header">
       </tr>
     </table>
   </div>`);
+
+const goback = stats.querySelector('.header__back').addEventListener('click', () => {
+  draw(intro);
+});
 
 export default stats;

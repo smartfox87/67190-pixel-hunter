@@ -1,5 +1,6 @@
 import getElementFromTemplate from '../js/getElementFromTemplate';
 
+import intro from '../templates/intro';
 import game1 from '../templates/game1';
 import draw from '../js/draw';
 
@@ -27,6 +28,10 @@ const rules = getElementFromTemplate(`<header class="header">
       <button class="rules__button  continue" type="submit" disabled>Go!</button>
     </form>
   </div>`);
+
+const goback = rules.querySelector('.header__back').addEventListener('click', () => {
+    draw(intro);
+});
 
 let rulesSubmit = rules.querySelector('.rules__button');
 

@@ -175,16 +175,16 @@ const goback$3 = game3.querySelector('.header__back').addEventListener('click', 
   draw$1(intro);
 });
 
-const answers$2 = game3.querySelectorAll('.game__option');
+const answers$1 = game3.querySelectorAll('.game__option');
 
-const handler$4 = (e) => {
+const handler$3 = (e) => {
   e.preventDefault();
   draw$1(stats);
 };
 
-for (const answer of answers$2) {
-  answer.onclick = handler$4;
-}
+[].forEach.call(answers$1, (item) => {
+  item.addEventListener(`click`, handler$3);
+});
 
 const game2 = getElementFromTemplate(`<header class="header">
     <div class="header__back">
@@ -236,16 +236,16 @@ const goback$2 = game2.querySelector('.header__back').addEventListener('click', 
   draw$1(intro);
 });
 
-const answers$1 = game2.querySelectorAll('.game__answer');
+const answers = game2.querySelectorAll('.game__answer');
 
-const handler$3 = (e) => {
+const handler$2 = (e) => {
   e.preventDefault();
   draw$1(game3);
 };
 
-for (const answer of answers$1) {
-  answer.onclick = handler$3;
-}
+[].forEach.call(answers, (item) => {
+  item.addEventListener(`click`, handler$2);
+});
 
 const game1 = getElementFromTemplate(`<header class="header">
     <div class="header__back">
@@ -307,16 +307,18 @@ const goback$1 = game1.querySelector('.header__back').addEventListener('click', 
   draw$1(intro);
 });
 
-const answers = game1.querySelectorAll('.game__answer');
+const gameOption = game1.querySelectorAll(`.game__option`);
+const gameContent = game1.querySelector(`.game__content`);
 
-const handler$2 = (e) => {
-  e.preventDefault();
-  draw$1(game2);
-};
-
-for (const answer of answers) {
-  answer.onclick = handler$2;
-}
+gameOption.forEach((element) => {
+  element.addEventListener(`click`, function () {
+    let count = 0;
+    count = gameContent.querySelectorAll(`input[type=radio]:checked`).length;
+    if (count === gameOption.length) {
+        draw$1(game2);
+    }
+  });
+});
 
 const rules = getElementFromTemplate(`<header class="header">
     <div class="header__back">

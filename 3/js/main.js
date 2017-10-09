@@ -4,7 +4,14 @@
 const getElementFromTemplate = (content, containerType = 'div') => {
   let node = document.createElement(containerType);
   node.innerHTML = content;
-  return node.cloneNode(true);
+  return node;
+};
+
+const draw = (page) => {
+  let mainElement = document.querySelector('#main');
+
+  mainElement.innerHTML = '';
+  mainElement.appendChild(page);
 };
 
 const stats = getElementFromTemplate(`<header class="header">
@@ -120,13 +127,6 @@ const goback$4 = stats.querySelector('.header__back').addEventListener('click', 
   draw(intro);
 });
 
-const draw$1 = (page) => {
-  let mainElement = document.querySelector('#main');
-
-  mainElement.innerHTML = '';
-  mainElement.appendChild(page);
-};
-
 const game3 = getElementFromTemplate(`<header class="header">
     <div class="header__back">
       <button class="back">
@@ -172,14 +172,14 @@ const game3 = getElementFromTemplate(`<header class="header">
 `);
 
 const goback$3 = game3.querySelector('.header__back').addEventListener('click', () => {
-  draw$1(intro);
+  draw(intro);
 });
 
 const answers$1 = game3.querySelectorAll('.game__option');
 
 const handler$3 = (e) => {
   e.preventDefault();
-  draw$1(stats);
+  draw(stats);
 };
 
 [].forEach.call(answers$1, (item) => {
@@ -233,14 +233,14 @@ const game2 = getElementFromTemplate(`<header class="header">
 `);
 
 const goback$2 = game2.querySelector('.header__back').addEventListener('click', () => {
-  draw$1(intro);
+  draw(intro);
 });
 
 const answers = game2.querySelectorAll('.game__answer');
 
 const handler$2 = (e) => {
   e.preventDefault();
-  draw$1(game3);
+  draw(game3);
 };
 
 [].forEach.call(answers, (item) => {
@@ -304,7 +304,7 @@ const game1 = getElementFromTemplate(`<header class="header">
   </div>`);
 
 const goback$1 = game1.querySelector('.header__back').addEventListener('click', () => {
-  draw$1(intro);
+  draw(intro);
 });
 
 const gameOption = game1.querySelectorAll(`.game__option`);
@@ -315,7 +315,7 @@ gameOption.forEach((element) => {
     let count = 0;
     count = gameContent.querySelectorAll(`input[type=radio]:checked`).length;
     if (count === gameOption.length) {
-        draw$1(game2);
+        draw(game2);
     }
   });
 });
@@ -346,7 +346,7 @@ const rules = getElementFromTemplate(`<header class="header">
   </div>`);
 
 const goback = rules.querySelector('.header__back').addEventListener('click', () => {
-    draw$1(intro);
+    draw(intro);
 });
 
 let rulesSubmit = rules.querySelector('.rules__button');
@@ -361,7 +361,7 @@ rules.querySelector('.rules__input').oninput = (evt) => {
 
 rulesSubmit.onclick = (e) => {
   e.preventDefault();
-  draw$1(game1);
+  draw(game1);
 };
 
 const greeting = getElementFromTemplate(`<div class="greeting central--blur">
@@ -380,7 +380,7 @@ const greeting = getElementFromTemplate(`<div class="greeting central--blur">
 
 const greeting__continue = greeting.querySelector('.greeting__continue');
 
-const handler$1 = (e) => draw$1(rules);
+const handler$1 = (e) => draw(rules);
 greeting__continue.addEventListener('click', handler$1);
 
 const intro = getElementFromTemplate(`<div id="intro" class="intro">
@@ -392,11 +392,11 @@ const intro = getElementFromTemplate(`<div id="intro" class="intro">
 
 const intro__asterisk = intro.querySelector('.intro__asterisk');
 
-const handler = (e) => draw$1(greeting);
+const handler = (e) => draw(greeting);
 intro__asterisk.addEventListener('click', handler);
 
 (() => {
-  draw$1(intro);
+  draw(intro);
 })();
 
 }());

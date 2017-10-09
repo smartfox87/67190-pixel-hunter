@@ -1,5 +1,6 @@
 import getElementFromTemplate from '../js/getElementFromTemplate';
 
+import draw from '../js/draw.js';
 import intro from '../templates/intro';
 
 const stats = getElementFromTemplate(`<header class="header">

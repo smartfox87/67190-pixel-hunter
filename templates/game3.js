@@ -59,9 +59,10 @@ const handler = (e) => {
   draw(stats);
 };
 
-for (const answer of answers) {
-  answer.onclick = handler;
-}
+[].forEach.call(answers, (item) => {
+  item.addEventListener(`click`, handler);
+});
+
 
 
 export default game3;

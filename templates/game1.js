@@ -64,15 +64,17 @@ const goback = game1.querySelector('.header__back').addEventListener('click', ()
   draw(intro);
 });
 
-const answers = game1.querySelectorAll('.game__answer');
+const gameOption = game1.querySelectorAll(`.game__option`);
+const gameContent = game1.querySelector(`.game__content`);
 
-const handler = (e) => {
-  e.preventDefault();
-  draw(game2);
-};
-
-for (const answer of answers) {
-  answer.onclick = handler;
-}
+gameOption.forEach((element) => {
+  element.addEventListener(`click`, function () {
+    let count = 0;
+    count = gameContent.querySelectorAll(`input[type=radio]:checked`).length;
+    if (count === gameOption.length) {
+        draw(game2);
+    }
+  });
+});
 
 export default game1;

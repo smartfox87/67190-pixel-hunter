@@ -7,14 +7,14 @@ const setPoints = (answers, lives) => {
   // [fast, fast, justRight, wrong, wrong, ...]
 
   answers.forEach((item) => {
-    if (`justRight`) {
-      counts += 100;
+    if (item === `justRight`) {
+      points += 100;
     }
-    if (`fast` && `justRight`) {
-      counts += 50;
+    if (item === `fast`) {
+      points += 150;
     }
-    if (`slow` && `justRight`) {
-      counts -= 50;
+    if (item === `slow`) {
+      points += 50;
     }
     if (`wrong`) {
       lives--;
@@ -23,7 +23,7 @@ const setPoints = (answers, lives) => {
   if (lives <= 0) {
     return -1;
   }
-  counts += lives * 50;
+  points += lives * 50;
   return points;
 
 };

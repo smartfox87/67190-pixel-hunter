@@ -13,7 +13,7 @@ const questsData = {
     fast: 0,
     slow: 0,
     total: 0,
-    result: ''
+    result: ``
   }
 };
 

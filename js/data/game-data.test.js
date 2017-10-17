@@ -10,31 +10,28 @@ describe(`Array`, () => {
   });
 });
 
-describe(`Game`, function () {
-
-  describe(`setPoints`, () => {
-    describe(`Returns`, () => {
-      it(`short Array = fail`, () => {
-        assert.equal(setPoints([`fast`, `fast`, `fast`], questsData.base.lives), -1);
-        assert.equal(setPoints([`fast`, `fast`, `fast`, `justRight`, `justRight`, `justRight`], questsData.base.lives), -1);
-        assert.equal(setPoints([`justRight`, `fast`, `slow`, `wrong`], questsData.base.lives), -1);
-        assert.equal(setPoints([`wrong`, `wrong`, `fast`, `slow`], questsData.base.lives), -1);
-      });
+describe(`setPoints`, () => {
+  describe(`Returns`, () => {
+    it(`short Array = fail`, () => {
+      assert.equal(setPoints([`fast`, `fast`, `fast`], questsData.base.lives), -1);
+      assert.equal(setPoints([`fast`, `fast`, `fast`, `justRight`, `justRight`, `justRight`], questsData.base.lives), -1);
+      assert.equal(setPoints([`justRight`, `fast`, `slow`, `wrong`], questsData.base.lives), -1);
+      assert.equal(setPoints([`wrong`, `wrong`, `fast`, `slow`], questsData.base.lives), -1);
     });
+  });
 
-    describe(`Setting`, () => {
-      it(`zero lives = fail`, () => {
-        assert.equal(setPoints([`wrong`, `wrong`, `wrong`], questsData.base.lives), -1);
-        assert.equal(setPoints([`wrong`, `wrong`, `wrong`, `fast`, `slow`], questsData.base.lives), -1);
-        assert.equal(setPoints([`justRight`, `fast`, `slow`, `fast`, `slow`, `wrong`, `wrong`, `slow`, `fast`, `wrong`], questsData.base.lives), -1);
-        assert.equal(setPoints([`slow`, `fast`, `slow`, `justRight`, `fast`, `wrong`, `wrong`, `fast`, `slow`, `wrong`], questsData.base.lives), -1);
-      });
+  describe(`Setting`, () => {
+    it(`zero lives = fail`, () => {
+      assert.equal(setPoints([`wrong`, `wrong`, `wrong`], questsData.base.lives), -1);
+      assert.equal(setPoints([`wrong`, `wrong`, `wrong`, `fast`, `slow`], questsData.base.lives), -1);
+      assert.equal(setPoints([`justRight`, `fast`, `slow`, `fast`, `slow`, `wrong`, `wrong`, `slow`, `fast`, `wrong`], questsData.base.lives), -1);
+      assert.equal(setPoints([`slow`, `fast`, `slow`, `justRight`, `fast`, `wrong`, `wrong`, `fast`, `slow`, `wrong`], questsData.base.lives), -1);
     });
+  });
 
-    describe(`Failures`, () => {
-      it(`all justRight = 1150`, () => {
-        assert.equal(setPoints([`justRight`, `justRight`, `justRight`, `justRight`, `justRight`, `justRight`, `justRight`, `justRight`, `justRight`, `justRight`], questsData.base.lives), 1150);
-      });
+  describe(`Failures`, () => {
+    it(`all justRight = 1150`, () => {
+      assert.equal(setPoints([`justRight`, `justRight`, `justRight`, `justRight`, `justRight`, `justRight`, `justRight`, `justRight`, `justRight`, `justRight`], questsData.base.lives), 1150);
     });
   });
 });

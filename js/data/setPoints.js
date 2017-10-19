@@ -16,7 +16,7 @@ const setPoints = (answers, lives) => {
     if (item === `slow`) {
       points += 50;
     }
-    if (`wrong`) {
+    if (item === `wrong`) {
       lives--;
     }
   });

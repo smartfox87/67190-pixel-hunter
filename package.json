@@ -32,10 +32,10 @@
   "engines": {
     "node": "6.11.3"
   },
-    "babel": {
-      "plugins": [
-       "transform-es2015-modules-commonjs"
-     ]
+  "babel": {
+    "plugins": [
+      "transform-es2015-modules-commonjs"
+    ]
   },
   "dependencies": {
     "mocha": "^4.0.1"

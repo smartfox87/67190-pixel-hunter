@@ -4,8 +4,6 @@ const setPoints = (answers, lives) => {
     return -1;
   }
 
-  // [fast, fast, justRight, wrong, wrong, ...]
-
   answers.forEach((item) => {
     if (item === `justRight`) {
       points += 100;

@@ -1,7 +1,7 @@
-import intro from '../templates/intro';
+import intro from './templates/intro';
 
-import draw from '../js/draw.js';
+import draw from './draw.js';
 
 (() => {
-  draw(intro);
+  draw(intro());
 })();

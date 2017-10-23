@@ -175,7 +175,7 @@ export default () => {
     ${result}
   `);
 
-  const goback = stats.querySelector('.header__back').addEventListener('click', () => {
+  stats.querySelector('.header__back').addEventListener('click', () => {
     draw(intro());
   });
 

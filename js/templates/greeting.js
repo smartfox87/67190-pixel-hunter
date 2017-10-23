@@ -17,7 +17,7 @@ export default () => {
 
   const greetingContinue = greeting.querySelector('.greeting__continue');
 
-  const handler = (e) => draw(rules());
+  const handler = () => draw(rules());
   greetingContinue.addEventListener('click', handler);
 
   return greeting;

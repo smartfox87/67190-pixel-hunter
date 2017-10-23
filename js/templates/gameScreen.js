@@ -5,9 +5,11 @@ import intro from '../templates/intro';
 import {fullHeader} from './header.js';
 import statsBlock from './statsBlock.js';
 
-import {fillQuestion_Each, fillQuestion_drawOrPhoto, fillQuestion_findOne} from './fillQuestion.js';
+import {fillQuestionEach, fillQuestionDrawOrPhoto, fillQuestionOne} from './fillQuestion.js';
 
 import startGame from './startGame';
+
+import questsData from '../data/questsData.js';
 
 // в зависимости от типа вопроса погдрузка нужного шаблона
 // заполнение его данными
@@ -21,13 +23,13 @@ export default (typeOfQuestion, question) => {
 
   switch (typeOfQuestion) {
     case 'two-of-two':
-      questBlock = fillQuestion_Each(question);
+      questBlock = fillQuestionEach(question);
       break;
     case 'tinder-like':
-      questBlock = fillQuestion_drawOrPhoto(question);
+      questBlock = fillQuestionDrawOrPhoto(question);
       break;
     case 'one-of-three':
-      questBlock = fillQuestion_findOne(question);
+      questBlock = fillQuestionOne(question);
       break;
     default:
       throw new Error('sorry, wierd question');
@@ -42,22 +44,67 @@ export default (typeOfQuestion, question) => {
   `);
 
 // bindhandlers
-  let answers = gameScreen.querySelectorAll('.game__option');
 
-  if (answers === 'undefined') {
-    answers = gameScreen.querySelectorAll('.game__answer');
+  let answers = gameScreen.querySelectorAll('.game__answer');
+
+  switch (answers.length) {
+    case 0:
+      answers = gameScreen.querySelectorAll('.game__option');
+      for (const item of answers) {
+        item.onclick = (event) => {
+          const answer = event.target;
+          if (answer.classList.contains('game__option--selected')) {
+            sendAnswer(answer.querySelector('img').alt);
+          } else {
+            sendAnswer(false);
+          }
+
+          event.preventDefault();
+          draw(startGame());
+        };
+      }
+      break;
+    case 2:
+      for (const item of answers) {
+        item.onclick = (event) => {
+          event.preventDefault();
+          sendAnswer(event.target.parentElement.querySelector('input[type=radio]').value);
+
+          event.preventDefault();
+          draw(startGame());
+        };
+      }
+      break;
+    case 4:
+      for (const item of answers) {
+        item.onclick = (event) => {
+
+          event.preventDefault();
+          event.currentTarget.querySelector('input[type=radio]').checked = true;
+          event.currentTarget.querySelector('input[type=radio]').readOnly = true;
+          const checkedAnswers = gameScreen.querySelectorAll('input[type=radio]:checked');
+
+          if (checkedAnswers.length === 2) {
+            const answer = [checkedAnswers[0].value, checkedAnswers[1].value];
+            sendAnswer(answer.toString());
+
+            event.preventDefault();
+            draw(startGame());
+          }
+        };
+      }
+      break;
+    default:
+      throw new Error('wtf');
   }
 
-  const handler = (e) => {
-    e.preventDefault();
-    draw(startGame());
+  const sendAnswer = (answer) => {
+    questsData.answer.push(answer);
+    console.log(questsData.answer);
   };
 
-  for (const answer of answers) {
-    answer.onclick = handler;
-  }
 
-  const goback = gameScreen.querySelector('.header__back').addEventListener('click', () => {
+  gameScreen.querySelector('.header__back').addEventListener('click', () => {
     draw(intro());
   });
 

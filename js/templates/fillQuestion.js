@@ -1,8 +1,8 @@
 // три функци заполняющие разметку под принятые данные
 
-const questionsCreate = (src, num, cls = '', size = 'width="468" height="458"') => {
+const questionsCreate = (src, num, height = '458', width = '468', cls = '') => {
   let questionsMarkDown = (`<div class="game__option">
-    <img src="${src}" alt="Option ${num}" ${size}>
+    <img src="${src}" alt="Option ${num}", height="${height}", width="${width}">
     <label class="game__answer game__answer--photo">
       <input name="question${num}" type="radio" value="photo">
       <span>Фото</span>
@@ -17,7 +17,7 @@ const questionsCreate = (src, num, cls = '', size = 'width="468" height="458"') 
   return questionsMarkDown;
 };
 
-const fillQuestion_Each = (question) => {
+const fillQuestionEach = (question) => {
 
   let {question: task, answers: answers} = question;
 
@@ -32,7 +32,7 @@ const fillQuestion_Each = (question) => {
   return markDown;
 };
 
-const fillQuestion_drawOrPhoto = (question) => {
+const fillQuestionDrawOrPhoto = (question) => {
 
   let {question: task, answers: answers} = question;
 
@@ -40,7 +40,7 @@ const fillQuestion_drawOrPhoto = (question) => {
 
   <form class="game__content  game__content--wide">
     <div class="game__option">
-      ${questionsCreate(answers[0].image.url, 1, answers[0].image.width, answers[0].image.height, answers[0].type, 'game__answer--wide')}
+      ${questionsCreate(answers[0].image.url, 1, answers[0].image.height, answers[0].image.width, answers[0].type, 'game__answer--wide')}
     </div>
   </form>
   `);
@@ -48,7 +48,7 @@ const fillQuestion_drawOrPhoto = (question) => {
   return markDown;
 };
 
-const fillQuestion_findOne = (question) => {
+const fillQuestionOne = (question) => {
 
   let {question: task, answers: answers} = question;
 
@@ -70,4 +70,4 @@ const fillQuestion_findOne = (question) => {
   return markDown;
 };
 
-export {fillQuestion_Each, fillQuestion_drawOrPhoto, fillQuestion_findOne};
+export {fillQuestionEach, fillQuestionDrawOrPhoto, fillQuestionOne};

@@ -53,8 +53,8 @@ export default () => {
     draw(startGame());
   };
 
-  const goback = rules.querySelector('.header__back').addEventListener('click', () => {
-      draw(intro());
+  rules.querySelector('.header__back').addEventListener('click', () => {
+    draw(intro());
   });
 
   return rules;

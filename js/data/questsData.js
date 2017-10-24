@@ -23,7 +23,7 @@ const questsData = {
       answers: [
         {
           image: {
-            url: 'http://i.imgur.com/DKR1HtB.jpg',
+            url: `http://i.imgur.com/DKR1HtB.jpg`,
             width: 468,
             height: 458
           },
@@ -31,7 +31,7 @@ const questsData = {
         },
         {
           image: {
-            url: 'https://k32.kn3.net/5C7060EC5.jpg',
+            url: `https://k32.kn3.net/5C7060EC5.jpg`,
             width: 468,
             height: 458
           },
@@ -45,7 +45,7 @@ const questsData = {
       answers: [
         {
           image: {
-            url: 'http://i.imgur.com/1KegWPz.jpg',
+            url: `http://i.imgur.com/1KegWPz.jpg`,
             width: 705,
             height: 455
           },
@@ -59,7 +59,7 @@ const questsData = {
       answers: [
         {
           'image': {
-            'url': 'http://placehold.it/304x455',
+            'url': `http://placehold.it/304x455`,
             'width': 304,
             'height': 455
           },
@@ -67,7 +67,7 @@ const questsData = {
         },
         {
           'image': {
-            'url': 'http://placehold.it/304x455',
+            'url': `http://placehold.it/304x455`,
             'width': 304,
             'height': 455
           },
@@ -75,7 +75,7 @@ const questsData = {
         },
         {
           'image': {
-            'url': 'http://placehold.it/304x455',
+            'url': `http://placehold.it/304x455`,
             'width': 304,
             'height': 455
           },
@@ -89,7 +89,7 @@ const questsData = {
       answers: [
         {
           'image': {
-            'url': 'http://placehold.it/304x455',
+            'url': `http://placehold.it/304x455`,
             'width': 304,
             'height': 455
           },
@@ -97,7 +97,7 @@ const questsData = {
         },
         {
           'image': {
-            'url': 'http://placehold.it/304x455',
+            'url': `http://placehold.it/304x455`,
             'width': 304,
             'height': 455
           },
@@ -105,7 +105,7 @@ const questsData = {
         },
         {
           'image': {
-            'url': 'http://placehold.it/304x455',
+            'url': `http://placehold.it/304x455`,
             'width': 304,
             'height': 455
           },
@@ -119,7 +119,7 @@ const questsData = {
       answers: [
         {
           image: {
-            url: 'https://i.imgur.com/DiHM5Zb.jpg',
+            url: `https://i.imgur.com/DiHM5Zb.jpg`,
             width: 705,
             height: 455
           },
@@ -133,7 +133,7 @@ const questsData = {
       answers: [
         {
           image: {
-            url: 'http://i.imgur.com/1KegWPz.jpg',
+            url: `http://i.imgur.com/1KegWPz.jpg`,
             width: 468,
             height: 458
           },
@@ -141,7 +141,7 @@ const questsData = {
         },
         {
           image: {
-            url: 'https://k42.kn3.net/CF42609C8.jpg',
+            url: `https://k42.kn3.net/CF42609C8.jpg`,
             width: 468,
             height: 458
           },
@@ -155,7 +155,7 @@ const questsData = {
       answers: [
         {
           image: {
-            url: 'http://placehold.it/705x455',
+            url: `http://placehold.it/705x455`,
             width: 705,
             height: 455
           },
@@ -169,7 +169,7 @@ const questsData = {
       answers: [
         {
           'image': {
-            'url': 'http://placehold.it/304x455',
+            'url': `http://placehold.it/304x455`,
             'width': 304,
             'height': 455
           },
@@ -177,7 +177,7 @@ const questsData = {
         },
         {
           'image': {
-            'url': 'http://placehold.it/304x455',
+            'url': `http://placehold.it/304x455`,
             'width': 304,
             'height': 455
           },
@@ -185,7 +185,7 @@ const questsData = {
         },
         {
           'image': {
-            'url': 'http://placehold.it/304x455',
+            'url': `http://placehold.it/304x455`,
             'width': 304,
             'height': 455
           },
@@ -199,7 +199,7 @@ const questsData = {
       answers: [
         {
           image: {
-            url: 'http://placehold.it/705x455',
+            url: `http://placehold.it/705x455`,
             width: 705,
             height: 455
           },
@@ -213,7 +213,7 @@ const questsData = {
       answers: [
         {
           'image': {
-            'url': 'http://placehold.it/304x455',
+            'url': `http://placehold.it/304x455`,
             'width': 304,
             'height': 455
           },
@@ -221,7 +221,7 @@ const questsData = {
         },
         {
           'image': {
-            'url': 'http://placehold.it/304x455',
+            'url': `http://placehold.it/304x455`,
             'width': 304,
             'height': 455
           },
@@ -229,7 +229,7 @@ const questsData = {
         },
         {
           'image': {
-            'url': 'http://placehold.it/304x455',
+            'url': `http://placehold.it/304x455`,
             'width': 304,
             'height': 455
           },

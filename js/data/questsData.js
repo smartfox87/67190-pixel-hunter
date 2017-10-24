@@ -27,7 +27,7 @@ const questsData = {
             width: 468,
             height: 458
           },
-          type: 'photo'
+          type: `photo`
         },
         {
           image: {
@@ -35,7 +35,7 @@ const questsData = {
             width: 468,
             height: 458
           },
-          type: 'painting'
+          type: `painting`
         }
       ],
     },
@@ -49,13 +49,13 @@ const questsData = {
             width: 705,
             height: 455
           },
-          type: 'photo'
+          type: `photo`
         }
       ]
     },
     {
-      type: 'one-of-three',
-      question: 'Найдите рисунок среди изображений',
+      type: `one-of-three`,
+      question: `Найдите рисунок среди изображений`,
       answers: [
         {
           'image': {
@@ -63,7 +63,7 @@ const questsData = {
             'width': 304,
             'height': 455
           },
-          'type': 'photo'
+          'type': `photo`
         },
         {
           'image': {
@@ -71,7 +71,7 @@ const questsData = {
             'width': 304,
             'height': 455
           },
-          'type': 'painting'
+          'type': `painting`
         },
         {
           'image': {
@@ -79,13 +79,13 @@ const questsData = {
             'width': 304,
             'height': 455
           },
-          'type': 'photo'
+          'type': `photo`
         }
       ]
     },
     {
-      type: 'one-of-three',
-      question: 'Найдите рисунок среди изображений',
+      type: `one-of-three`,
+      question: `Найдите рисунок среди изображений`,
       answers: [
         {
           'image': {
@@ -93,7 +93,7 @@ const questsData = {
             'width': 304,
             'height': 455
           },
-          'type': 'photo'
+          'type': `photo`
         },
         {
           'image': {
@@ -101,7 +101,7 @@ const questsData = {
             'width': 304,
             'height': 455
           },
-          'type': 'painting'
+          'type': `painting`
         },
         {
           'image': {
@@ -109,13 +109,13 @@ const questsData = {
             'width': 304,
             'height': 455
           },
-          'type': 'photo'
+          'type': `photo`
         }
       ]
     },
     {
-      type: 'tinder-like',
-      question: 'Угадай, фото или рисунок?',
+      type: `tinder-like`,
+      question: `Угадай, фото или рисунок?`,
       answers: [
         {
           image: {
@@ -123,12 +123,12 @@ const questsData = {
             width: 705,
             height: 455
           },
-          type: 'photo'
+          type: `photo`
         }
       ]
     },
     {
-      type: 'two-of-two',
+      type: `two-of-two`,
       question: 'Угадайте для каждого изображения фото или рисунок?',
       answers: [
         {
@@ -137,7 +137,7 @@ const questsData = {
             width: 468,
             height: 458
           },
-          type: 'photo'
+          type: `photo`
         },
         {
           image: {
@@ -145,13 +145,13 @@ const questsData = {
             width: 468,
             height: 458
           },
-          type: 'painting'
+          type: `painting`
         }
       ],
     },
     {
-      type: 'tinder-like',
-      question: 'Угадай, фото или рисунок?',
+      type: `tinder-like`,
+      question: `Угадай, фото или рисунок?`,
       answers: [
         {
           image: {
@@ -159,13 +159,13 @@ const questsData = {
             width: 705,
             height: 455
           },
-          type: 'photo'
+          type: `photo`
         }
       ]
     },
     {
-      type: 'one-of-three',
-      question: 'Найдите рисунок среди изображений',
+      type: `one-of-three`,
+      question: `Найдите рисунок среди изображений`,
       answers: [
         {
           'image': {
@@ -173,7 +173,7 @@ const questsData = {
             'width': 304,
             'height': 455
           },
-          'type': 'photo'
+          'type': `photo`
         },
         {
           'image': {
@@ -181,7 +181,7 @@ const questsData = {
             'width': 304,
             'height': 455
           },
-          'type': 'painting'
+          'type': `painting`
         },
         {
           'image': {
@@ -189,13 +189,13 @@ const questsData = {
             'width': 304,
             'height': 455
           },
-          'type': 'photo'
+          'type': `photo`
         }
       ]
     },
     {
-      type: 'tinder-like',
-      question: 'Угадай, фото или рисунок?',
+      type: `tinder-like`,
+      question: `Угадай, фото или рисунок?`,
       answers: [
         {
           image: {
@@ -203,13 +203,13 @@ const questsData = {
             width: 705,
             height: 455
           },
-          type: 'photo'
+          type: `photo`
         }
       ]
     },
     {
-      type: 'one-of-three',
-      question: 'Найдите рисунок среди изображений',
+      type: `one-of-three`,
+      question: `Найдите рисунок среди изображений`,
       answers: [
         {
           'image': {
@@ -217,7 +217,7 @@ const questsData = {
             'width': 304,
             'height': 455
           },
-          'type': 'photo'
+          'type': `photo`
         },
         {
           'image': {
@@ -225,7 +225,7 @@ const questsData = {
             'width': 304,
             'height': 455
           },
-          'type': 'painting'
+          'type': `painting`
         },
         {
           'image': {
@@ -233,7 +233,7 @@ const questsData = {
             'width': 304,
             'height': 455
           },
-          'type': 'photo'
+          'type': `photo`
         }
       ]
     },

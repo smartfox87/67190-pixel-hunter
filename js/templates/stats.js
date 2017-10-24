@@ -5,6 +5,8 @@ import intro from '../templates/intro';
 
 import {smallHeader} from './header.js';
 
+import questsData from '../data/questsData.js';
+
 export default () => {
 
   const finalResult = {
@@ -16,26 +18,26 @@ export default () => {
   const score1 = {
     number: '1.',
     points: '×&nbsp;100',
-    total: '900',
+    total: `${questsData.player.answer}` * 100,
     bonus1: {
       forWhat: 'Бонус за скорость:',
-      extra: '1&nbsp;',
+      extra: `${questsData.player.fast}&nbsp;`,
       points: '×&nbsp;50',
-      total: '50'
+      total: `${questsData.player.fast}` * 50
     },
     bonus2: {
       forWhat: 'Бонус за жизни:',
-      extra: '2&nbsp;',
+      extra: `${questsData.base.lives}&nbsp;`,
       points: '×&nbsp;50',
-      total: '100'
+      total: `${questsData.base.lives}` * 50
     },
     bonus3: {
       forWhat: 'Штраф за медлительность:',
-      extra: '2&nbsp;',
+      extra: `${questsData.player.slow}&nbsp;`,
       points: '×&nbsp;50',
-      total: '-100'
+      total: '-' + `${questsData.player.slow}` * 50
     },
-    finalscore: '950'
+    finalscore: `${questsData.player.total}`
   };
 
   const result1 = (`

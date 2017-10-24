@@ -18,8 +18,8 @@ const questsData = {
 
   questions: [
     {
-      type: 'two-of-two',
-      question: 'Угадайте для каждого изображения фото или рисунок?',
+      type: `two-of-two`,
+      question: `Угадайте для каждого изображения фото или рисунок?`,
       answers: [
         {
           image: {
@@ -40,8 +40,8 @@ const questsData = {
       ],
     },
     {
-      type: 'tinder-like',
-      question: 'Угадай, фото или рисунок?',
+      type: `tinder-like`,
+      question: `Угадай, фото или рисунок?`,
       answers: [
         {
           image: {

@@ -100,7 +100,6 @@ export default (typeOfQuestion, question) => {
 
   const sendAnswer = (answer) => {
     questsData.answer.push(answer);
-    console.log(questsData.answer);
   };
 
 

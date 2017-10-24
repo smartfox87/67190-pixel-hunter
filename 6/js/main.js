@@ -27,8 +27,8 @@ const questsData = {
 
   questions: [
     {
-      type: 'two-of-two',
-      question: 'Угадайте для каждого изображения фото или рисунок?',
+      type: `two-of-two`,
+      question: `Угадайте для каждого изображения фото или рисунок?`,
       answers: [
         {
           image: {
@@ -49,8 +49,8 @@ const questsData = {
       ],
     },
     {
-      type: 'tinder-like',
-      question: 'Угадай, фото или рисунок?',
+      type: `tinder-like`,
+      question: `Угадай, фото или рисунок?`,
       answers: [
         {
           image: {
@@ -292,26 +292,26 @@ var stats = () => {
   const score1 = {
     number: '1.',
     points: '×&nbsp;100',
-    total: '900',
+    total: `${questsData.player.answer}` * 100,
     bonus1: {
       forWhat: 'Бонус за скорость:',
-      extra: '1&nbsp;',
+      extra: `${questsData.player.fast}&nbsp;`,
       points: '×&nbsp;50',
-      total: '50'
+      total: `${questsData.player.fast}` * 50
     },
     bonus2: {
       forWhat: 'Бонус за жизни:',
-      extra: '2&nbsp;',
+      extra: `${questsData.base.lives}&nbsp;`,
       points: '×&nbsp;50',
-      total: '100'
+      total: `${questsData.base.lives}` * 50
     },
     bonus3: {
       forWhat: 'Штраф за медлительность:',
-      extra: '2&nbsp;',
+      extra: `${questsData.player.slow}&nbsp;`,
       points: '×&nbsp;50',
-      total: '-100'
+      total: '-' + `${questsData.player.slow}` * 50
     },
-    finalscore: '950'
+    finalscore: `${questsData.player.total}`
   };
 
   const result1 = (`
@@ -451,7 +451,7 @@ var stats = () => {
     ${result}
   `);
 
-  const goback = stats.querySelector('.header__back').addEventListener('click', () => {
+  stats.querySelector('.header__back').addEventListener('click', () => {
     draw(intro());
   });
 
@@ -475,9 +475,9 @@ const statsBlock = `<div class="stats">
 
 // три функци заполняющие разметку под принятые данные
 
-const questionsCreate = (src, num, cls = '', size = 'width="468" height="458"') => {
+const questionsCreate = (src, num, height = '458', width = '468', cls = '') => {
   let questionsMarkDown = (`<div class="game__option">
-    <img src="${src}" alt="Option ${num}" ${size}>
+    <img src="${src}" alt="Option ${num}", height="${height}", width="${width}">
     <label class="game__answer game__answer--photo">
       <input name="question${num}" type="radio" value="photo">
       <span>Фото</span>
@@ -492,7 +492,7 @@ const questionsCreate = (src, num, cls = '', size = 'width="468" height="458"') 
   return questionsMarkDown;
 };
 
-const fillQuestion_Each = (question) => {
+const fillQuestionEach = (question) => {
 
   let {question: task, answers: answers} = question;
 
@@ -507,7 +507,7 @@ const fillQuestion_Each = (question) => {
   return markDown;
 };
 
-const fillQuestion_drawOrPhoto = (question) => {
+const fillQuestionDrawOrPhoto = (question) => {
 
   let {question: task, answers: answers} = question;
 
@@ -515,7 +515,7 @@ const fillQuestion_drawOrPhoto = (question) => {
 
   <form class="game__content  game__content--wide">
     <div class="game__option">
-      ${questionsCreate(answers[0].image.url, 1, answers[0].image.width, answers[0].image.height, answers[0].type, 'game__answer--wide')}
+      ${questionsCreate(answers[0].image.url, 1, answers[0].image.height, answers[0].image.width, answers[0].type, 'game__answer--wide')}
     </div>
   </form>
   `);
@@ -523,7 +523,7 @@ const fillQuestion_drawOrPhoto = (question) => {
   return markDown;
 };
 
-const fillQuestion_findOne = (question) => {
+const fillQuestionOne = (question) => {
 
   let {question: task, answers: answers} = question;
 
@@ -557,13 +557,13 @@ var gameScreen = (typeOfQuestion, question) => {
 
   switch (typeOfQuestion) {
     case 'two-of-two':
-      questBlock = fillQuestion_Each(question);
+      questBlock = fillQuestionEach(question);
       break;
     case 'tinder-like':
-      questBlock = fillQuestion_drawOrPhoto(question);
+      questBlock = fillQuestionDrawOrPhoto(question);
       break;
     case 'one-of-three':
-      questBlock = fillQuestion_findOne(question);
+      questBlock = fillQuestionOne(question);
       break;
     default:
       throw new Error('sorry, wierd question');
@@ -578,22 +578,66 @@ var gameScreen = (typeOfQuestion, question) => {
   `);
 
 // bindhandlers
-  let answers = gameScreen.querySelectorAll('.game__option');
 
-  if (answers === 'undefined') {
-    answers = gameScreen.querySelectorAll('.game__answer');
+  let answers = gameScreen.querySelectorAll('.game__answer');
+
+  switch (answers.length) {
+    case 0:
+      answers = gameScreen.querySelectorAll('.game__option');
+      for (const item of answers) {
+        item.onclick = (event) => {
+          const answer = event.target;
+          if (answer.classList.contains('game__option--selected')) {
+            sendAnswer(answer.querySelector('img').alt);
+          } else {
+            sendAnswer(false);
+          }
+
+          event.preventDefault();
+          draw(startGame());
+        };
+      }
+      break;
+    case 2:
+      for (const item of answers) {
+        item.onclick = (event) => {
+          event.preventDefault();
+          sendAnswer(event.target.parentElement.querySelector('input[type=radio]').value);
+
+          event.preventDefault();
+          draw(startGame());
+        };
+      }
+      break;
+    case 4:
+      for (const item of answers) {
+        item.onclick = (event) => {
+
+          event.preventDefault();
+          event.currentTarget.querySelector('input[type=radio]').checked = true;
+          event.currentTarget.querySelector('input[type=radio]').readOnly = true;
+          const checkedAnswers = gameScreen.querySelectorAll('input[type=radio]:checked');
+
+          if (checkedAnswers.length === 2) {
+            const answer = [checkedAnswers[0].value, checkedAnswers[1].value];
+            sendAnswer(answer.toString());
+
+            event.preventDefault();
+            draw(startGame());
+          }
+        };
+      }
+      break;
+    default:
+      throw new Error('wtf');
   }
 
-  const handler = (e) => {
-    e.preventDefault();
-    draw(startGame());
+  const sendAnswer = (answer) => {
+    questsData.answer.push(answer);
   };
 
-  for (const answer of answers) {
-    answer.onclick = handler;
-  }
 
-  const goback = gameScreen.querySelector('.header__back').addEventListener('click', () => {
+  gameScreen.querySelector('.header__back').addEventListener('click', () => {
     draw(intro());
   });
 
@@ -664,8 +708,8 @@ var rules = () => {
     draw(startGame());
   };
 
-  const goback = rules.querySelector('.header__back').addEventListener('click', () => {
-      draw(intro());
+  rules.querySelector('.header__back').addEventListener('click', () => {
+    draw(intro());
   });
 
   return rules;
@@ -685,7 +729,7 @@ var greeting = () => {
 
   const greetingContinue = greeting.querySelector('.greeting__continue');
 
-  const handler = (e) => draw(rules());
+  const handler = () => draw(rules());
   greetingContinue.addEventListener('click', handler);
 
   return greeting;
@@ -701,7 +745,7 @@ var intro = () => {
 
   const introAsterisk = intro.querySelector('.intro__asterisk');
 
-  const handler = (e) => draw(greeting());
+  const handler = () => draw(greeting());
   introAsterisk.addEventListener('click', handler);
 
   return intro;

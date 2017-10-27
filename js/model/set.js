@@ -3,7 +3,7 @@ import gameData from '../data/questsData';
 export const setTime = (game, timer) => {
 
   if (timer > 30) {
-    throw new RangeError('wtf');
+    throw new RangeError(`wtf`);
   }
 
   let result = Object.assign({}, game);
@@ -12,7 +12,7 @@ export const setTime = (game, timer) => {
 };
 
 export const hasLevel = (currentLevel) =>
-  typeof gameData.questions[`${currentLevel}`] !== 'undefined';
+  typeof gameData.questions[`${currentLevel}`] !== `undefined`;
 
 export const getLevel = (game, currentLevel) => {
   if (!hasLevel(currentLevel)) {
@@ -25,11 +25,11 @@ export const getLevel = (game, currentLevel) => {
 export const setFinalResult = (game) => {
   if (game.base.lives > 0) {
     let result = Object.assign({}, game);
-    result.player.result = 'Еееееее!';
+    result.player.result = `Еееееее!`;
     return result;
   } else {
     let result = Object.assign({}, game);
-    result.player.result = 'Пфффф(((';
+    result.player.result = `Пфффф(((`;
     return result;
   }
 };
@@ -53,7 +53,7 @@ export const getPoints = (game) => {
   return result;
 };
 
-export const checkRightAnswerSpeed = (data, time, answer) => {
+export const checkRightAnswerSpeed = (data, time) => {
   if (time < 10) {
     return setSlowAnswer(data);
   }
@@ -76,7 +76,7 @@ export const setFastAnswer = (game) => {
   return result;
 };
 
-export const setSlowAnswer = (game, unknownAnswer) => {
+export const setSlowAnswer = (game) => {
   let result = Object.assign({}, game);
   result.player.slow = result.player.slow + 1;
   return result;

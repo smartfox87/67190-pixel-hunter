@@ -55,17 +55,17 @@ class Model {
     this._state = setCurrentLevel(this._state, this._state.base.currentLevel + 1);
   }
 
-  addAnswer(time, answer) {
+  addAnswer(time) {
     if (time < 10) {
-      this._state = sliceAnswer(this._state, 'slow');
+      this._state = sliceAnswer(this._state, `slow`);
       this._state = setSlowAnswer(this._state, this._state.player.slow + 1);
     }
     if (time > 20) {
-      this._state = sliceAnswer(this._state, 'fast');
+      this._state = sliceAnswer(this._state, `fast`);
       this._state = setFastAnswer(this._state, this._state.player.fast + 1);
     }
     if (time > 10 && time < 20) {
-      this._state = sliceAnswer(this._state, 'correct');
+      this._state = sliceAnswer(this._state, `correct`);
       this._state = setCorrectAnswer(this._state, this._state.player.correct + 1);
     }
     this._state = setAnswer(this._state);
@@ -73,12 +73,12 @@ class Model {
 
   addUnknownAnswer() {
     this._state = setUnknownAnswer(this._state, this._state.player.unknown + 1);
-    this._state = sliceAnswer(this._state, 'unknown');
+    this._state = sliceAnswer(this._state, `unknown`);
   }
 
   addWrongAnswer() {
     this._state = setWrongAnswer(this._state, this._state.player.wrong + 1);
-    this._state = sliceAnswer(this._state, 'wrong');
+    this._state = sliceAnswer(this._state, `wrong`);
   }
 
   end() {

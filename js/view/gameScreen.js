@@ -19,17 +19,17 @@ export default class GameScreen extends AbstractView {
 
   getMarkup() {
     switch (this.typeOfQuestion) {
-      case 'two-of-two':
+      case `two-of-two`:
         this.questBlock = fillQuestionEach(this.question);
         break;
-      case 'tinder-like':
+      case `tinder-like`:
         this.questBlock = fillQuestionDrawOrPhoto(this.question);
         break;
-      case 'one-of-three':
+      case `one-of-three`:
         this.questBlock = fillQuestionOne(this.question);
         break;
       default:
-        throw new Error('sorry, wierd question');
+        throw new Error(`sorry, wierd question`);
     }
 
     return `
@@ -41,16 +41,16 @@ export default class GameScreen extends AbstractView {
   }
 
   bindHandlers() {
-    let answers = this.element.querySelectorAll('.game__answer');
+    let answers = this.element.querySelectorAll(`.game__answer`);
 
     switch (answers.length) {
       case 0:
-        answers = this.element.querySelectorAll('.game__option');
+        answers = this.element.querySelectorAll(`.game__option`);
         for (const item of answers) {
           item.onclick = (event) => {
             const answer = event.target;
-            if (answer.classList.contains('game__option--selected')) {
-              this._sendAnswer(answer.querySelector('img').alt);
+            if (answer.classList.contains(`game__option--selected`)) {
+              this._sendAnswer(answer.querySelector(`img`).alt);
             } else {
               this._sendAnswer(false);
             }
@@ -62,7 +62,7 @@ export default class GameScreen extends AbstractView {
         for (const item of answers) {
           item.onclick = (event) => {
             event.preventDefault();
-            this._sendAnswer(event.target.parentElement.querySelector('input[type=radio]').value);
+            this._sendAnswer(event.target.parentElement.querySelector(`input[type=radio]`).value);
             this.onClick(event);
           };
         }
@@ -72,9 +72,9 @@ export default class GameScreen extends AbstractView {
           item.onclick = (event) => {
 
             event.preventDefault();
-            event.currentTarget.querySelector('input[type=radio]').checked = true;
-            event.currentTarget.querySelector('input[type=radio]').readOnly = true;
-            const checkedAnswers = this.element.querySelectorAll('input[type=radio]:checked');
+            event.currentTarget.querySelector(`input[type=radio]`).checked = true;
+            event.currentTarget.querySelector(`input[type=radio]`).readOnly = true;
+            const checkedAnswers = this.element.querySelectorAll(`input[type=radio]:checked`);
 
             if (checkedAnswers.length === 2) {
               const answer = [checkedAnswers[0].value, checkedAnswers[1].value];
@@ -85,12 +85,12 @@ export default class GameScreen extends AbstractView {
         }
         break;
       default:
-        throw new Error('wtf');
+        throw new Error(`wtf`);
     }
   }
 
   clearHandlers() {
-    this.answer.removeEventListener('click', this.onClick);
+    this.answer.removeEventListener(`click`, this.onClick);
   }
 
   onClick() {

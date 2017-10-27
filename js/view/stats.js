@@ -7,26 +7,26 @@ export default class Stats extends AbstractView {
     this.data = data;
 
     const score1 = {
-      number: '1.',
-      points: '×&nbsp;100',
+      number: `1.`,
+      points: `×&nbsp;100`,
       total: `${this.data.player.answer}` * 100,
       bonus1: {
-        forWhat: 'Бонус за скорость:',
+        forWhat: `Бонус за скорость:`,
         extra: `${this.data.player.fast}&nbsp;`,
-        points: '×&nbsp;50',
+        points: `×&nbsp;50`,
         total: `${this.data.player.fast}` * 50
       },
       bonus2: {
-        forWhat: 'Бонус за жизни:',
+        forWhat: `Бонус за жизни:`,
         extra: `${this.data.base.lives}&nbsp;`,
-        points: '×&nbsp;50',
+        points: `×&nbsp;50`,
         total: `${this.data.base.lives}` * 50
       },
       bonus3: {
-        forWhat: 'Штраф за медлительность:',
+        forWhat: `Штраф за медлительность:`,
         extra: `${this.data.player.slow}&nbsp;`,
-        points: '×&nbsp;50',
-        total: '-' + `${this.data.player.slow}` * 50
+        points: `×&nbsp;50`,
+        total: `-` + `${this.data.player.slow}` * 50
       },
       finalscore: `${this.data.player.total}`
     };
@@ -37,7 +37,7 @@ export default class Stats extends AbstractView {
         <td class="resultNumber">${score1.number}</td>
         <td colspan="2">
           <ul class="stats">
-            ${this.data.answer.map((item)=>`<li class="stats__result stats__result--${item}"></li>`).join('')}
+            ${this.data.answer.map((item)=>`<li class="stats__result stats__result--${item}"></li>`).join(``)}
           </ul>
         </td>
         <td class="resultPoints">${score1.points}</td>
@@ -70,9 +70,9 @@ export default class Stats extends AbstractView {
     </table>`);
 
     const score2 = {
-      number: '2.',
-      points: '',
-      total: 'fail'
+      number: `2.`,
+      points: ``,
+      total: `fail`
     };
 
     const result2 = (`
@@ -99,16 +99,16 @@ export default class Stats extends AbstractView {
       </table>`);
 
     const score3 = {
-      number: '3.',
-      points: '×&nbsp;100',
-      total: '900',
+      number: `3.`,
+      points: `×&nbsp;100`,
+      total: `900`,
       bonus1: {
-        forWhat: 'Бонус за жизни:',
-        extra: '2&nbsp;',
-        points: '×&nbsp;50',
-        total: '100'
+        forWhat: `Бонус за жизни:`,
+        extra: `2&nbsp;`,
+        points: `×&nbsp;50`,
+        total: `100`
       },
-      finalscore: '1000'
+      finalscore: `1000`
     };
 
     const result3 = (`

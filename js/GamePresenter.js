@@ -31,7 +31,7 @@ class GamePresenter {
   }
 
   createScreenGame() {
-    let screenGame = getElementFromTemplate('');
+    let screenGame = getElementFromTemplate(``);
 
     this.header = this.createHeader();
     screenGame.appendChild(this.header);
@@ -127,7 +127,7 @@ class GamePresenter {
     this.stopTimer();
     this.model.end();
 
-    let endGame = getElementFromTemplate('');
+    let endGame = getElementFromTemplate(``);
     this.header = this.createHeader();
     endGame.appendChild(this.header);
 
@@ -137,15 +137,15 @@ class GamePresenter {
   }
 
   bindHandlers() {
-    this.header.querySelector('.header__back').addEventListener('click', this.onClick);
+    this.header.querySelector(`.header__back`).addEventListener(`click`, this.onClick);
 
-    this.header.querySelector('.header__back').addEventListener('click', () => {
+    this.header.querySelector(`.header__back`).addEventListener(`click`, () => {
       Application.showGreeting();
     });
   }
 
   clearHandlers() {
-    this.header.querySelector('.header__back').removeEventListener('click', this.onClick);
+    this.header.querySelector(`.header__back`).removeEventListener(`click`, this.onClick);
   }
 
   onClick() {

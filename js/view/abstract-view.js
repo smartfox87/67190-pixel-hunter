@@ -6,7 +6,7 @@ export default class AbstractView {
   }
 
   getMarkup() {
-    throw new Error('Method getMarkup is not defined');
+    throw new Error(`Method getMarkup is not defined`);
   }
 
   bindHandlers() {

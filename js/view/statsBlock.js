@@ -10,7 +10,7 @@ export default class StatsBlock extends AbstractView {
     return `
     <div class="stats">
       <ul class="stats">
-          ${this.data.map((item)=>`<li class="stats__result stats__result--${item}"></li>`).join('')}
+          ${this.data.map((item)=>`<li class="stats__result stats__result--${item}"></li>`).join(``)}
       </ul>
     </div>
         `;

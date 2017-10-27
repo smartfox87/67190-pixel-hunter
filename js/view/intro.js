@@ -20,11 +20,11 @@ export default () => {
     }
 
     bindHandlers() {
-      this.element.querySelector('.intro__asterisk').addEventListener('click', this.onClick);
+      this.element.querySelector(`.intro__asterisk`).addEventListener(`click`, this.onClick);
     }
 
     clearHandlers() {
-      this.element.querySelector('.intro__asterisk').removeEventListener('click', this.onClick);
+      this.element.querySelector(`.intro__asterisk`).removeEventListener(`click`, this.onClick);
     }
 
     onClick() {

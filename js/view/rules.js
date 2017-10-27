@@ -18,14 +18,14 @@ export default () => {
     getMarkup() {
 
       const rulesMap = {
-        rulesTitle: 'Правила',
+        rulesTitle: `Правила`,
         rulesDescription: {
-          try: '10 раз',
-          time: '30 секунд',
-          wrong: 'не более 3х раз'
+          try: `10 раз`,
+          time: `30 секунд`,
+          wrong: `не более 3х раз`
         },
-        rulesInput: 'Ваше Имя',
-        rulesButton: 'Go!'
+        rulesInput: `Ваше Имя`,
+        rulesButton: `Go!`
       };
 
       const rulesBlock = (`
@@ -48,27 +48,27 @@ export default () => {
     }
 
     bindHandlers() {
-      this.rulesSubmit = this.element.querySelector('.rules__button');
-      this.rulesSubmit.addEventListener('click', (evt) => {
+      this.rulesSubmit = this.element.querySelector(`.rules__button`);
+      this.rulesSubmit.addEventListener(`click`, (evt) => {
         evt.preventDefault();
         Application.showGame();
       });
 
-      this.element.querySelector('.header__back').addEventListener('click', () => {
+      this.element.querySelector(`.header__back`).addEventListener(`click`, () => {
         Application.showGreeting();
       });
 
-      this.element.querySelector('.rules__input').oninput = (evt) => {
+      this.element.querySelector(`.rules__input`).oninput = (evt) => {
         if (evt.target.value) {
-          this.rulesSubmit.removeAttribute('disabled');
+          this.rulesSubmit.removeAttribute(`disabled`);
         } else {
-          this.rulesSubmit.setAttribute('disabled', '');
+          this.rulesSubmit.setAttribute(`disabled`, ``);
         }
       };
     }
 
     clearHandlers() {
-      this.rulesSubmit.removeEventListener('click', this.onClick);
+      this.rulesSubmit.removeEventListener(`click`, this.onClick);
     }
 
     onClick(evt) {
@@ -77,7 +77,7 @@ export default () => {
     }
 
     focus() {
-      this._element.querySelector('.rules__input').focus();
+      this._element.querySelector(`.rules__input`).focus();
     }
  }
   return new Rules().element;

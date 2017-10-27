@@ -7,12 +7,12 @@ export default class Header extends AbstractView {
     this.data = data;
   }
 
-  lives(data) {
+  lives() {
     const MAX_LIVES = 3;
-    const emptyHeartIcon = 'img/heart__empty.svg';
-    const fullHeartIcon = 'img/heart__full.svg';
+    const emptyHeartIcon = `img/heart__empty.svg`;
+    const fullHeartIcon = `img/heart__full.svg`;
 
-    let hearts = '';
+    let hearts = ``;
     for (let i = 0; i < MAX_LIVES; i++) {
       hearts += `<img src="${this.data.lives > i ? fullHeartIcon : emptyHeartIcon}" class="game__heart" alt="Life" width="32" height="32">`;
     }

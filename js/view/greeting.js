@@ -25,11 +25,11 @@ export default () => {
     }
 
     bindHandlers() {
-      this.element.querySelector('.greeting__continue').addEventListener('click', this.onClick);
+      this.element.querySelector(`.greeting__continue`).addEventListener(`click`, this.onClick);
     }
 
     clearHandlers() {
-      this.element.querySelector('.greeting__continue').removeEventListener('click', this.onClick);
+      this.element.querySelector(`.greeting__continue`).removeEventListener(`click`, this.onClick);
     }
 
     onClick() {

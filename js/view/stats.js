@@ -1,6 +1,5 @@
 import AbstractView from './abstract-view';
 
-
 export default class Stats extends AbstractView {
   constructor(data) {
     super();

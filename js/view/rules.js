@@ -54,10 +54,6 @@ export default () => {
         Application.showGame();
       });
 
-      this.element.querySelector(`.header__back`).addEventListener(`click`, () => {
-        Application.showGreeting();
-      });
-
       this.element.querySelector(`.rules__input`).oninput = (evt) => {
         if (evt.target.value) {
           this.rulesSubmit.removeAttribute(`disabled`);

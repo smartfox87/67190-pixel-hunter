@@ -1,5 +1,6 @@
 
 import AbstractView from './abstract-view';
+import Application from '../Application';
 
 export default class Header extends AbstractView {
   constructor(data) {
@@ -54,5 +55,11 @@ export default class Header extends AbstractView {
         ${this.gameHeader()}
       </header>
     `;
+  }
+
+  bindHandlers() {
+    this.element.querySelector(`.header__back`).addEventListener(`click`, () => {
+      Application.showGreeting();
+    });
   }
 }

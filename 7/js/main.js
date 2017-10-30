@@ -166,6 +166,12 @@ class Header extends AbstractView {
       </header>
     `;
   }
+
+  bindHandlers() {
+    this.element.querySelector(`.header__back`).addEventListener(`click`, () => {
+      Application.showGreeting();
+    });
+  }
 }
 
 const questsData = {
@@ -457,10 +463,6 @@ var rules = () => {
       this.rulesSubmit.addEventListener(`click`, (evt) => {
         evt.preventDefault();
         Application.showGame();
-      });
-
-      this.element.querySelector(`.header__back`).addEventListener(`click`, () => {
-        Application.showGreeting();
       });
 
       this.element.querySelector(`.rules__input`).oninput = (evt) => {
@@ -807,6 +809,8 @@ class GameScreen extends AbstractView {
             event.preventDefault();
             event.currentTarget.querySelector(`input[type=radio]`).checked = true;
             event.currentTarget.querySelector(`input[type=radio]`).readOnly = true;
+            event.currentTarget.querySelector(`input[type=radio]`).disabled = true;
+            event.currentTarget.querySelector(`input[type=radio]`).setAttribute(`disabled`, true);
             const checkedAnswers = this.element.querySelectorAll(`input[type=radio]:checked`);
 
             if (checkedAnswers.length === 2) {

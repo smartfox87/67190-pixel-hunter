@@ -1,5 +1,11 @@
 import gameData from '../data/questsData';
 
+export const setQuestionsList = (game, data) => {
+  let result = Object.assign({}, game);
+  result.questions = data;
+  return result;
+};
+
 export const setTime = (game, timer) => {
 
   if (timer > 30) {

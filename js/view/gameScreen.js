@@ -48,11 +48,11 @@ export default class GameScreen extends AbstractView {
         answers = this.element.querySelectorAll(`.game__option`);
         for (const item of answers) {
           item.onclick = (event) => {
-            const answer = event.target;
-            if (answer.classList.contains(`game__option--selected`)) {
-              this._sendAnswer(answer.querySelector(`img`).alt);
+            let answer = event.target.classList.contains(`photo`);
+            if (answer) {
+              this._sendAnswer(`photo`);
             } else {
-              this._sendAnswer(false);
+              this._sendAnswer(`painting`);
             }
             this.onClick(event);
           };
@@ -62,7 +62,12 @@ export default class GameScreen extends AbstractView {
         for (const item of answers) {
           item.onclick = (event) => {
             event.preventDefault();
-            this._sendAnswer(event.target.parentElement.querySelector(`input[type=radio]`).value);
+            const answer = event.target.parentElement.querySelector(`input[type=radio]`).value;
+            if (answer) {
+              this._sendAnswer(answer);
+            } else {
+              this._sendAnswer(false);
+            }
             this.onClick(event);
           };
         }
@@ -73,14 +78,17 @@ export default class GameScreen extends AbstractView {
 
             event.preventDefault();
             event.currentTarget.querySelector(`input[type=radio]`).checked = true;
-            event.currentTarget.querySelector(`input[type=radio]`).readOnly = true;
             event.currentTarget.querySelector(`input[type=radio]`).disabled = true;
-            event.currentTarget.querySelector(`input[type=radio]`).setAttribute(`disabled`, true);
+
             const checkedAnswers = this.element.querySelectorAll(`input[type=radio]:checked`);
 
             if (checkedAnswers.length === 2) {
               const answer = [checkedAnswers[0].value, checkedAnswers[1].value];
-              this._sendAnswer(answer.toString());
+              if (answer) {
+                this._sendAnswer(answer.toString());
+              } else {
+                this._sendAnswer(false);
+              }
               this.onClick(event);
             }
           };

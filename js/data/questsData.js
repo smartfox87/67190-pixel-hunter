@@ -8,8 +8,10 @@ const questsData = {
   answer: [],
 
   player: {
+    answer: 0,
     correct: 0,
     wrong: 0,
+    unknown: 0,
     fast: 0,
     slow: 0,
     total: 0,
@@ -38,6 +40,7 @@ const questsData = {
           type: `painting`
         }
       ],
+      correctAnswer: `paint,photo`,
     },
     {
       type: `tinder-like`,
@@ -51,7 +54,8 @@ const questsData = {
           },
           type: `photo`
         }
-      ]
+      ],
+      correctAnswer: `paint`
     },
     {
       type: `one-of-three`,
@@ -81,7 +85,8 @@ const questsData = {
           },
           'type': `photo`
         }
-      ]
+      ],
+      correctAnswer: `painting`
     },
     {
       type: `one-of-three`,
@@ -111,7 +116,8 @@ const questsData = {
           },
           'type': `photo`
         }
-      ]
+      ],
+      correctAnswer: `painting`
     },
     {
       type: `tinder-like`,
@@ -125,7 +131,8 @@ const questsData = {
           },
           type: `photo`
         }
-      ]
+      ],
+      correctAnswer: `paint`
     },
     {
       type: `two-of-two`,
@@ -148,6 +155,7 @@ const questsData = {
           type: `painting`
         }
       ],
+      correctAnswer: `paint,photo`
     },
     {
       type: `tinder-like`,
@@ -161,7 +169,8 @@ const questsData = {
           },
           type: `photo`
         }
-      ]
+      ],
+      correctAnswer: `paint`
     },
     {
       type: `one-of-three`,
@@ -191,7 +200,8 @@ const questsData = {
           },
           'type': `photo`
         }
-      ]
+      ],
+      correctAnswer: `painting`
     },
     {
       type: `tinder-like`,
@@ -205,7 +215,8 @@ const questsData = {
           },
           type: `photo`
         }
-      ]
+      ],
+      correctAnswer: `paint`
     },
     {
       type: `one-of-three`,
@@ -235,7 +246,8 @@ const questsData = {
           },
           'type': `photo`
         }
-      ]
+      ],
+      correctAnswer: `painting`
     },
   ]
 };

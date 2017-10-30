@@ -148,6 +148,10 @@ class GamePresenter {
     this.header.querySelector(`.header__back`).removeEventListener(`click`, this.onClick);
   }
 
+  findOne() {
+    return event.target;
+  }
+
   onClick() {
     Application.showRules();
   }

@@ -33,7 +33,7 @@ class AbstractView {
 
   get element() {
     if (!this._element) {
-      this._element = getElementFromTemplate(this.getMarkup());
+      this._element = getElementFromTemplate(this.getMarkup);
       this.bindHandlers();
     }
 
@@ -47,7 +47,7 @@ class MarkUp extends AbstractView {
     this.data = data;
   }
 
-  getMarkup() {
+  get getMarkup() {
     return `
       <div id="intro" class="intro">
         <h1 class="intro__asterisk">*</h1>
@@ -56,7 +56,7 @@ class MarkUp extends AbstractView {
         `;
   }
 
-  bind() {
+  bindHandlers() {
     this.element.querySelector(`.intro__asterisk`).onclick = (evt) => {
       evt.preventDefault();
       this.onClick();
@@ -87,7 +87,7 @@ class Greeting$1 extends AbstractView {
     super();
   }
 
-  getMarkup() {
+  get getMarkup() {
     return `
     <div class="greeting  central--blur">
         <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
@@ -101,7 +101,7 @@ class Greeting$1 extends AbstractView {
         `;
   }
 
-  bind() {
+  bindHandlers() {
     this.element.querySelector(`.greeting__continue`).onclick = (evt) => {
       evt.preventDefault();
       this.onClick();
@@ -451,7 +451,7 @@ class Rules$1 extends AbstractView {
     this.header = new Header(questsData);
   }
 
-  getMarkup() {
+  get getMarkup() {
 
     const rulesMap = {
       rulesTitle: `Правила`,
@@ -493,6 +493,11 @@ class Rules$1 extends AbstractView {
         this.rulesSubmit.setAttribute(`disabled`, ``);
       }
     };
+
+    this.element.querySelector(`.rules__button`).onclick = (evt) => {
+        evt.preventDefault();
+        this.onClick();
+      };
   }
 
   clearHandlers() {
@@ -683,7 +688,7 @@ class Stats$2 extends AbstractView {
     `);
   }
 
-  getMarkup() {
+  get getMarkup() {
     return `
       ${this.result}
     `;
@@ -721,7 +726,7 @@ class StatsBlock extends AbstractView {
 
 // три функци заполняющие разметку под принятые данные
 
-const questionsCreate = (src, num, height = '458', width = '468', cls = '') => {
+const questionsCreate = (src, num, height = `458`, width = `468`, cls = ``) => {
   let questionsMarkDown = (`<div class="game__option">
     <img src="${src}" alt="Option ${num}", height="${height}", width="${width}">
     <label class="game__answer game__answer--photo">
@@ -761,7 +766,7 @@ const fillQuestionDrawOrPhoto = (question) => {
 
   <form class="game__content  game__content--wide">
     <div class="game__option">
-      ${questionsCreate(answers[0].image.url, 1, answers[0].image.height, answers[0].image.width, answers[0].type, 'game__answer--wide')}
+      ${questionsCreate(answers[0].image.url, 1, answers[0].image.height, answers[0].image.width, answers[0].type, `game__answer--wide`)}
     </div>
   </form>
   `);
@@ -803,7 +808,7 @@ class GameScreen extends AbstractView {
     this._sendAnswer = sendAnswer;
   }
 
-  getMarkup() {
+  get getMarkup() {
     switch (this.typeOfQuestion) {
       case `two-of-two`:
         this.questBlock = fillQuestionEach(this.question);
@@ -1211,9 +1216,7 @@ class GamePresenter {
   }
 }
 
-const gamePresenter = new GamePresenter(model);
-
-var gamePresenter$1 = () => gamePresenter.startGame();
+var gamePresenter = new GamePresenter(model);
 
 const ControllerId = {
   INTRO: ``,
@@ -1239,14 +1242,13 @@ const routes = {
   [ControllerId.INTRO]: intro,
   [ControllerId.GREETING]: greeting,
   [ControllerId.RULES]: rules,
-  [ControllerId.GAME]: gamePresenter$1,
+  [ControllerId.GAME]: gamePresenter,
   [ControllerId.STATS]: Stats$1
 };
 
 class Application {
 
   static init() {
-    intro.init();
     const onHashChange = () => {
       const hashValue = location.hash.replace(`#`, ``);
       const [id, data] = hashValue.split(`?`);

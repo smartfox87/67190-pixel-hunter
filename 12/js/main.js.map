@@ -1,0 +1,1 @@
+{"version":3,"names":[],"mappings":"","sources":["main.js"],"sourcesContent":["import Application from './Application';\n\nApplication.init();\n"],"file":"main.js"}
